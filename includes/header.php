@@ -9,11 +9,32 @@ $staffUser   = is_staff();
 $studentUser = is_student();
 $cartCount   = cart_item_count($conn);
 
-// Count uncompleted orders for admin/staff badge
+// Count uncompleted transactions for badges
 $pendingOrderCount = 0;
-if ($loggedIn && ($adminUser || $staffUser)) {
-    $poResult = $conn->query("SELECT COUNT(*) AS cnt FROM orders WHERE order_status IN ('Pending','Confirmed','Preparing','Ready for Pickup','Out for Delivery')");
-    $pendingOrderCount = (int)($poResult->fetch_assoc()['cnt'] ?? 0);
+$pendingResCount = 0;
+$studentActiveOrderCount = 0;
+$studentActiveResCount = 0;
+
+if ($loggedIn) {
+    if ($adminUser || $staffUser) {
+        $poResult = $conn->query("SELECT COUNT(*) AS cnt FROM orders WHERE order_status IN ('Pending','Confirmed','Preparing','Ready for Pickup','Out for Delivery')");
+        $pendingOrderCount = (int)($poResult->fetch_assoc()['cnt'] ?? 0);
+        
+        if ($adminUser) {
+            $prResult = $conn->query("SELECT COUNT(*) AS cnt FROM reservations WHERE status IN ('Pending','Confirmed')");
+            $pendingResCount = (int)($prResult->fetch_assoc()['cnt'] ?? 0);
+        }
+    }
+    
+    if ($studentUser) {
+        $userId = (int)($_SESSION['user_id'] ?? 0);
+        
+        $saoResult = $conn->query("SELECT COUNT(*) AS cnt FROM orders WHERE user_id = $userId AND order_status IN ('Pending','Confirmed','Preparing','Ready for Pickup','Out for Delivery')");
+        $studentActiveOrderCount = (int)($saoResult->fetch_assoc()['cnt'] ?? 0);
+        
+        $sarResult = $conn->query("SELECT COUNT(*) AS cnt FROM reservations WHERE user_id = $userId AND status IN ('Pending','Confirmed')");
+        $studentActiveResCount = (int)($sarResult->fetch_assoc()['cnt'] ?? 0);
+    }
 }
 
 $logoTarget = qb_url('index.php');
@@ -84,6 +105,9 @@ if ($loggedIn) {
                     <a href="<?php echo qb_url('admin/reservations.php'); ?>" class="sidebar-link <?php echo ($currentPage==='reservations.php')?'active':''; ?>">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                         Reservations
+                        <?php if ($pendingResCount > 0): ?>
+                            <span class="sidebar-badge"><?php echo $pendingResCount; ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
             </ul>
@@ -275,6 +299,9 @@ if ($loggedIn) {
                     <a href="<?php echo qb_url('order-history.php'); ?>" class="sidebar-link <?php echo ($currentPage==='order-history.php')?'active':''; ?>">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                         Order History
+                        <?php if ($studentActiveOrderCount > 0): ?>
+                            <span class="sidebar-badge"><?php echo $studentActiveOrderCount; ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li>
@@ -296,6 +323,9 @@ if ($loggedIn) {
                     <a href="<?php echo qb_url('reservation.php'); ?>" class="sidebar-link <?php echo ($currentPage==='reservation.php')?'active':''; ?>">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                         Reservations
+                        <?php if ($studentActiveResCount > 0): ?>
+                            <span class="sidebar-badge"><?php echo $studentActiveResCount; ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
             </ul>
