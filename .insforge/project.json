@@ -1,0 +1,7 @@
+{
+    "name": "campus_cafeteria",
+    "version": "1.0.0",
+    "description": "Campus Cafeteria - A campus-based ordering and cafeteria operations platform built for students, kitchen staff, and administrators.",
+    "type": "php",
+    "entry": "index.php"
+}
