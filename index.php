@@ -33,7 +33,7 @@ include 'includes/header.php';
         </div>
 
         <div class="hero-image-card">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80" alt="Campus cafeteria hero">
+            <img src="<?php echo qb_url('assets/images/foods/1779144763_Nigerian_Assorted_Peppered_Meats_-_Party_Style.jfif'); ?>" alt="Campus cafeteria hero">
         </div>
     </div>
 </section>
@@ -100,7 +100,7 @@ include 'includes/header.php';
             </div>
             <div class="testimonial-card">
                 <p>“The admin side actually manages meals and order flow, so the project feels like a real campus product.”</p>
-                <h4>— YK</h4>
+                <h4>— Grant kelechi</h4>
             </div>
             <div class="testimonial-card">
                 <p>“The kitchen queue and status updates make the real-time tracking believable and practical.”</p>

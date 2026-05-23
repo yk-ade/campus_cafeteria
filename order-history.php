@@ -39,7 +39,7 @@ include 'includes/header.php';
                     <tbody>
                         <?php while ($order = $result->fetch_assoc()): ?>
                             <?php $statusClass = strtolower(str_replace(' ', '-', $order['order_status'])); ?>
-                            <tr>
+                            <tr class="order-row" onclick="window.location.href='<?php echo qb_url('view-receipt.php?order_id=' . $order['id']); ?>'">
                                 <td>#<?php echo $order['id']; ?><br><small><?php echo h($order['order_token'] ?? ''); ?></small></td>
                                 <td>₦<?php echo number_format((float)$order['total_amount'], 2); ?></td>
                                 <td><?php echo h($order['delivery_method']); ?></td>

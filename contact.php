@@ -15,7 +15,7 @@
             <div class="why-grid">
                 <div class="why-card">
                     <h3>Support Email</h3>
-                    <p>support@campuscafeteria.local</p>
+                    <p>support@cafeteria.com</p>
                 </div>
                 <div class="why-card">
                     <h3>Phone</h3>

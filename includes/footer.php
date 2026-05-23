@@ -25,8 +25,8 @@ $_hasSidebar = $_isStudent || $_isAdmin || $_isStaff;
         </div>
         <div class="footer-box">
             <h4>Support</h4>
-            <p>Email: support@campuscafeteria.local</p>
-            <p>Phone: +234 800 000 0000</p>
+            <p>Email: support@campuscafe<br>teria.local</p>
+            <p>Phone: +234 9167 754 023</p>
             <p>Location: Main Campus Food Court</p>
         </div>
     </div>
