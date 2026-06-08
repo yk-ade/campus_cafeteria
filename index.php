@@ -41,7 +41,7 @@ include 'includes/header.php';
 <section class="categories">
     <div class="container">
         <h2 class="section-title">Popular Categories</h2>
-        <p class="section-subtitle">Built on the same smooth UI logic as Rectem Cafeteria, but adapted for a campus cafeteria flow.</p>
+        <p class="section-subtitle">Built on the same smooth UI logic as Rectem Cafeteria, but adapted for campus food service operations.</p>
 
         <div class="category-chip-row">
             <a href="<?php echo qb_url('menu.php?category=Breakfast'); ?>" class="category-chip">Breakfast</a>
