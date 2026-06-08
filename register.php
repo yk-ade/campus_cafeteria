@@ -65,7 +65,7 @@ include 'includes/header.php';
     <div class="auth-container auth-container-wide">
         <div class="auth-card">
             <div class="auth-logo">
-                <h2>Campus Cafeteria</h2>
+                <h2>Rectem Cafeteria</h2>
             </div>
             <h1>Create Student Account</h1>
             <p class="auth-subtext">Register once, then place orders, track progress, and manage your cafeteria activity from one dashboard.</p>

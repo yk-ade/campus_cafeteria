@@ -3,7 +3,7 @@
 <section class="page-banner">
     <div class="container">
         <div class="page-banner-inner">
-            <h1 class="section-title">Contact Campus Cafeteria</h1>
+            <h1 class="section-title">Contact Rectem Cafeteria</h1>
             <p class="section-subtitle" style="margin-bottom:0;">Need help with meal orders, pickup, delivery, or administration? Use the support details below.</p>
         </div>
     </div>
@@ -15,7 +15,7 @@
             <div class="why-grid">
                 <div class="why-card">
                     <h3>Support Email</h3>
-                    <p>support@cafeteria.com</p>
+                    <p>support@rectemcafeteria.com</p>
                 </div>
                 <div class="why-card">
                     <h3>Phone</h3>

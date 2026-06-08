@@ -19,7 +19,7 @@ include 'includes/header.php';
     <div class="container hero-content">
         <div class="hero-text">
             <h1>Campus food ordering that feels fast, familiar, and organized.</h1>
-            <p>Campus Cafeteria helps students browse meals, place orders for pickup or campus delivery, track progress in real time, and enjoy a smoother cafeteria experience.</p>
+            <p>Rectem Cafeteria helps students browse meals, place orders for pickup or campus delivery, track progress in real time, and enjoy a smoother cafeteria experience.</p>
             <div class="hero-actions">
                 <a href="<?php echo qb_url('menu.php'); ?>" class="btn btn-primary">Order Food</a>
                 <a href="<?php echo qb_url('reservation.php'); ?>" class="btn btn-light">Reserve a Spot</a>
@@ -33,7 +33,7 @@ include 'includes/header.php';
         </div>
 
         <div class="hero-image-card">
-            <img src="<?php echo qb_url('assets/images/foods/1779144763_Nigerian_Assorted_Peppered_Meats_-_Party_Style.jfif'); ?>" alt="Campus cafeteria hero">
+            <img src="<?php echo qb_url('assets/images/foods/1779144763_Nigerian_Assorted_Peppered_Meats_-_Party_Style.jfif'); ?>" alt="Rectem Cafeteria hero">
         </div>
     </div>
 </section>
@@ -41,7 +41,7 @@ include 'includes/header.php';
 <section class="categories">
     <div class="container">
         <h2 class="section-title">Popular Categories</h2>
-        <p class="section-subtitle">Built on the same smooth UI logic as Campus Cafeteria, but adapted for a campus cafeteria flow.</p>
+        <p class="section-subtitle">Built on the same smooth UI logic as Rectem Cafeteria, but adapted for a campus cafeteria flow.</p>
 
         <div class="category-chip-row">
             <a href="<?php echo qb_url('menu.php?category=Breakfast'); ?>" class="category-chip">Breakfast</a>

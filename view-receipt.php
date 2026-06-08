@@ -56,7 +56,7 @@ include 'includes/header.php';
             <div class="receipt-container">
                 <!-- Header -->
                 <div class="receipt-top">
-                    <h2>Campus Cafeteria</h2>
+                    <h2>Rectem Cafeteria</h2>
                     <p>Receipt for your order</p>
                 </div>
 

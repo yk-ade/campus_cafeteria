@@ -66,7 +66,7 @@ include 'includes/header.php';
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-logo">
-                <h2>Campus Cafeteria</h2>
+                <h2>Rectem Cafeteria</h2>
             </div>
             <h1>Welcome Back</h1>
             <p class="auth-subtext">Login to continue ordering meals, tracking requests, or managing cafeteria operations.</p>

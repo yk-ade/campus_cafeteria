@@ -11,7 +11,7 @@ $_hasSidebar = $_isStudent || $_isAdmin || $_isStaff;
 <footer class="site-footer">
     <div class="container footer-grid">
         <div class="footer-box">
-            <h3>Campus Cafeteria</h3>
+            <h3>Rectem Cafeteria</h3>
             <p>A campus-based ordering and cafeteria operations platform built for students, kitchen staff, and administrators.</p>
         </div>
         <div class="footer-box">
@@ -25,13 +25,13 @@ $_hasSidebar = $_isStudent || $_isAdmin || $_isStaff;
         </div>
         <div class="footer-box">
             <h4>Support</h4>
-            <p>Email: support@campuscafe<br>teria.local</p>
+            <p>Email: support@rectemcafeteria.com</p>
             <p>Phone: +234 9167 754 023</p>
             <p>Location: Main Campus Food Court</p>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; <?php echo date('Y'); ?> Campus Cafeteria. All rights reserved.</p>
+        <p>&copy; <?php echo date('Y'); ?> Rectem Cafeteria. All rights reserved.</p>
     </div>
 </footer>
 <?php endif; ?>
@@ -39,7 +39,7 @@ $_hasSidebar = $_isStudent || $_isAdmin || $_isStaff;
 <?php if ($_hasSidebar): ?>
     <!-- close .student-content and .student-app -->
         <footer class="sidebar-page-footer">
-            <p>&copy; <?php echo date('Y'); ?> Campus Cafeteria &mdash; <a href="<?php echo qb_url('contact.php'); ?>">Support</a></p>
+            <p>&copy; <?php echo date('Y'); ?> Rectem Cafeteria &mdash; <a href="<?php echo qb_url('contact.php'); ?>">Support</a></p>
         </footer>
     </div><!-- /.student-content -->
 </div><!-- /.student-app -->

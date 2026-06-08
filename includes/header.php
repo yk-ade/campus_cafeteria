@@ -49,7 +49,7 @@ if ($loggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Cafeteria – Smart ordering for campus life</title>
+    <title>Rectem Cafeteria – Smart ordering for campus life</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="<?php echo qb_url('assets/css/style.css'); ?>">
 </head>
@@ -66,7 +66,7 @@ if ($loggedIn) {
             <a href="<?php echo $logoTarget; ?>" class="sidebar-logo-link">
                 <div class="sidebar-logo-icon">C</div>
                 <div class="sidebar-logo-text">
-                    <strong>Campus Cafeteria</strong>
+                    <strong>Rectem Cafeteria</strong>
                     <span>Admin Panel</span>
                 </div>
             </a>
@@ -170,7 +170,7 @@ if ($loggedIn) {
             <a href="<?php echo $logoTarget; ?>" class="sidebar-logo-link">
                 <div class="sidebar-logo-icon">C</div>
                 <div class="sidebar-logo-text">
-                    <strong>Campus Cafeteria</strong>
+                    <strong>Rectem Cafeteria</strong>
                     <span>Kitchen Staff</span>
                 </div>
             </a>
@@ -250,7 +250,7 @@ if ($loggedIn) {
             <a href="<?php echo $logoTarget; ?>" class="sidebar-logo-link">
                 <div class="sidebar-logo-icon">C</div>
                 <div class="sidebar-logo-text">
-                    <strong>Campus Cafeteria</strong>
+                    <strong>Rectem Cafeteria</strong>
                     <span>Student Portal</span>
                 </div>
             </a>
@@ -359,7 +359,7 @@ if ($loggedIn) {
             </button>
             <a href="<?php echo $logoTarget; ?>" class="topbar-logo-link">
                 <div class="logo-icon" style="width:34px;height:34px;font-size:.95rem;">C</div>
-                <strong>Campus Cafeteria</strong>
+                <strong>Rectem Cafeteria</strong>
             </a>
             <div class="topbar-right">
                 <a href="<?php echo qb_url('cart.php'); ?>" class="topbar-cart-btn" title="Cart">
@@ -378,7 +378,7 @@ if ($loggedIn) {
         <a href="<?php echo $logoTarget; ?>" class="logo">
             <div class="logo-icon">C</div>
             <div class="logo-text">
-                <h2>Campus Cafeteria</h2>
+                <h2>Rectem Cafeteria</h2>
                 <p>Fast meals. Smarter campus service.</p>
             </div>
         </a>
