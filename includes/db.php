@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "rectem_cafeteria_db";
+$database = "rectem_Resturant_db";
 
 $conn = new mysqli($host, $username, $password, $database);
 

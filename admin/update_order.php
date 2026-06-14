@@ -17,5 +17,10 @@ if (isset($_POST['order_id']) && isset($_POST['status'])) {
     }
 }
 
-header("Location: " . qb_url('admin/orders.php'));
+$redirectUrl = qb_url('admin/orders.php');
+if (isset($status)) {
+    $redirectUrl .= '?updated=1&order_id=' . $orderId . '&status=' . rawurlencode($status);
+}
+
+header("Location: " . $redirectUrl);
 exit();

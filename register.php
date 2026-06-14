@@ -48,8 +48,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $insertStmt->bind_param("sssss", $fullName, $matricNo, $email, $phone, $hashedPassword);
 
             if ($insertStmt->execute()) {
-                $message = "Account created successfully. You can now log in.";
-                $messageType = "success";
+                $_SESSION['user_id'] = $conn->insert_id;
+                $_SESSION['full_name'] = $fullName;
+                $_SESSION['email'] = $email;
+                $_SESSION['matric_no'] = $matricNo;
+                $_SESSION['role'] = 'user';
+
+                header("Location: " . qb_url('dashboard.php'));
+                exit();
             } else {
                 $message = "Something went wrong. Please try again.";
                 $messageType = "error";
@@ -65,7 +71,7 @@ include 'includes/header.php';
     <div class="auth-container auth-container-wide">
         <div class="auth-card">
             <div class="auth-logo">
-                <h2>Rectem Cafeteria</h2>
+                <h2>Rectem Resturant </h2>
             </div>
             <h1>Create Student Account</h1>
             <p class="auth-subtext">Register once, then place orders, track progress, and manage your cafeteria activity from one dashboard.</p>
@@ -87,11 +93,13 @@ include 'includes/header.php';
                 <div class="form-group">
                     <input type="text" name="phone" placeholder="Phone Number" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group password-group">
                     <input type="password" name="password" placeholder="Password" required>
+                    <button type="button" class="password-toggle" aria-label="Show password">Show</button>
                 </div>
-                <div class="form-group">
+                <div class="form-group password-group">
                     <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                    <button type="button" class="password-toggle" aria-label="Show password">Show</button>
                 </div>
                 <button type="submit" class="btn btn-primary">Create Account</button>
             </form>

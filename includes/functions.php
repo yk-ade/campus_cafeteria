@@ -18,7 +18,7 @@ function qb_base_url(): string
         return $base === '' ? '' : $base;
     }
 
-    return '/rectem_cafeteria';
+    return '/rectem_Resturant';
 }
 
 function qb_url(string $path = ''): string

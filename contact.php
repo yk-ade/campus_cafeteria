@@ -15,7 +15,7 @@
             <div class="why-grid">
                 <div class="why-card">
                     <h3>Support Email</h3>
-                    <p>support@rectemcafeteria.com</p>
+                    <p>support@rectemresturant.com</p>
                 </div>
                 <div class="why-card">
                     <h3>Phone</h3>

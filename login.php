@@ -66,7 +66,7 @@ include 'includes/header.php';
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-logo">
-                <h2>Rectem Cafeteria</h2>
+                <h2>Rectem Resturant </h2>
             </div>
             <h1>Welcome Back</h1>
             <p class="auth-subtext">Login to continue ordering meals, tracking requests, or managing cafeteria operations.</p>
@@ -79,8 +79,9 @@ include 'includes/header.php';
                 <div class="form-group">
                     <input type="text" name="identifier" placeholder="Email Address or Matric Number" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group password-group">
                     <input type="password" name="password" placeholder="Password" required>
+                    <button type="button" class="password-toggle" aria-label="Show password">Show</button>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
