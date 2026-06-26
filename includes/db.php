@@ -2,9 +2,9 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "rectem_cafeteria_db";
+$database = "rectem_restaurant_db";
 
-$conn = new mysqli($host, $username, $password, $database);
+$conn = new mysqli('localhost', 'root', '', 'rectem_restaurant_db');
 
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);

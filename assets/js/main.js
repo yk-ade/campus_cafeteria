@@ -177,21 +177,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const container = createToastContainer();
             const toast = document.createElement('div');
             toast.className = 'order-status-toast';
-            toast.innerHTML = `
-                <div class="order-status-toast-header">
-                    <strong>Order Update</strong>
-                    <button type="button" class="toast-close" aria-label="Close notification">×</button>
-                </div>
-                <div class="order-status-toast-body">
-                    <p>${message}</p>
-                </div>
-            `;
 
-            const closeButton = toast.querySelector('.toast-close');
+            const header = document.createElement('div');
+            header.className = 'order-status-toast-header';
+
+            const title = document.createElement('strong');
+            title.textContent = 'Order Update';
+
+            const closeButton = document.createElement('button');
+            closeButton.type = 'button';
+            closeButton.className = 'toast-close';
+            closeButton.setAttribute('aria-label', 'Close notification');
+            closeButton.textContent = '×';
             closeButton.addEventListener('click', () => {
                 toast.classList.remove('visible');
                 setTimeout(() => toast.remove(), 300);
             });
+
+            header.appendChild(title);
+            header.appendChild(closeButton);
+
+            const body = document.createElement('div');
+            body.className = 'order-status-toast-body';
+            const bodyText = document.createElement('p');
+            bodyText.textContent = message;
+            body.appendChild(bodyText);
+
+            toast.appendChild(header);
+            toast.appendChild(body);
 
             container.appendChild(toast);
             requestAnimationFrame(() => {
@@ -216,10 +229,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const previousStatus = parseStoredMap();
             const nextStatus = {};
             const changedOrders = [];
+            const hasPreviousStatus = Object.keys(previousStatus).length > 0;
 
             orders.forEach((order) => {
                 nextStatus[order.id] = order.order_status;
-                if (initialized && previousStatus[order.id] && previousStatus[order.id] !== order.order_status) {
+                const oldStatus = previousStatus[order.id];
+
+                if (hasPreviousStatus) {
+                    if (oldStatus && oldStatus !== order.order_status) {
+                        changedOrders.push(order);
+                    } else if (!oldStatus && order.order_status !== 'Pending') {
+                        changedOrders.push(order);
+                    }
+                } else if (order.order_status !== 'Pending') {
                     changedOrders.push(order);
                 }
             });

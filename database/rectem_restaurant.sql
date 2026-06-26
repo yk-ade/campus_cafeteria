@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS rectem_Resturant_db;
-USE rectem_Resturant_db;
+CREATE DATABASE IF NOT EXISTS rectem_restaurant_db;
+USE rectem_restaurant_db;
 
 DROP TABLE IF EXISTS payments;
 DROP TABLE IF EXISTS order_items;

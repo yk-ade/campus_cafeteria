@@ -1,1 +1,1 @@
-# rectem_cafeteria
+# rectem_restaurant
