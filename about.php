@@ -3,8 +3,8 @@
 <section class="page-banner">
     <div class="container">
         <div class="page-banner-inner">
-            <h1 class="section-title">About Rectem Cafeteria</h1>
-            <p class="section-subtitle" style="margin-bottom:0;">Rectem Cafeteria is a cafeteria ordering and tracking platform built for the RECTEM campus. It combines student ordering, kitchen workflow, admin control, and focused AI support in one system.</p>
+            <h1 class="section-title">About Rectem Resturant</h1>
+            <p class="section-subtitle" style="margin-bottom:0;">Rectem Resturant is a cafeteria ordering and tracking platform built for the RECTEM campus. It combines student ordering, kitchen workflow, admin control, and focused AI support in one system.</p>
         </div>
     </div>
 </section>

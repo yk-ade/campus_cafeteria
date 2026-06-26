@@ -63,7 +63,7 @@ section {
 .section-subtitle {
     text-align: center;
     color: var(--muted);
-    max-width: 760px;
+    max-width: 7600px;
     margin: 0 auto 36px;
 }
 
@@ -161,6 +161,7 @@ section {
     position: sticky;
     top: 0;
     z-index: 1000;
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
 
@@ -462,6 +463,28 @@ section {
     background-color: #FCFCFD;
     outline: none;
     font-size: 0.98rem;
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-group .password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 8px;
+    font-size: 0.95rem;
+}
+
+.password-group .password-toggle:focus {
+    outline: none;
 }
 
 .search-box input:focus,
@@ -1949,9 +1972,15 @@ section {
     overflow-x: hidden;
     z-index: 900;
     transition: transform .28s cubic-bezier(.4,0,.2,1);
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,.1) transparent;
 }
+
+@supports (scrollbar-width: thin) {
+    .student-sidebar {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,.1) transparent;
+    }
+}
+
 .student-sidebar::-webkit-scrollbar { width: 4px; }
 .student-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 4px; }
 
@@ -2183,6 +2212,136 @@ section {
     transition: opacity .25s;
 }
 .sidebar-overlay.visible { opacity: 1; }
+
+.completion-popup-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 1200;
+}
+
+.completion-popup-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.completion-popup-card {
+    width: min(520px, 100%);
+    background: var(--white);
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+}
+
+.popup-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.08);
+    color: var(--dark);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.popup-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: var(--success);
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+}
+
+.completion-popup-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.65rem;
+}
+
+.completion-popup-card p {
+    margin-bottom: 24px;
+    color: var(--muted);
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.popup-actions .btn {
+    min-width: 150px;
+}
+
+.order-status-toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1300;
+    pointer-events: none;
+}
+
+.order-status-toast {
+    width: min(360px, calc(100vw - 40px));
+    background: var(--white);
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    padding: 16px 18px;
+    opacity: 0;
+    transform: translateX(120%);
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: auto;
+}
+
+.order-status-toast.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.order-status-toast-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.order-status-toast-header strong {
+    font-size: 1rem;
+}
+
+.toast-close {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.order-status-toast-body p {
+    margin: 0;
+    color: var(--dark);
+    line-height: 1.5;
+}
 
 /* ── Sidebar page footer (inside student layout) ── */
 .sidebar-page-footer {

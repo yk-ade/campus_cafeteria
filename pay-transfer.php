@@ -65,7 +65,7 @@ include 'includes/header.php';
                     </div>
                     <div class="bank-detail-item">
                         <span class="detail-label">Account Name</span>
-                        <span class="detail-value">Rectem Cafeteria</span>
+                        <span class="detail-value">Rectem Resturant </span>
                     </div>
                     <div class="bank-detail-item bank-amount-highlight">
                         <span class="detail-label">Amount to Transfer</span>

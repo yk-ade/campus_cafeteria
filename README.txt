@@ -1,4 +1,4 @@
-Rectem Cafeteria Ordering System
+Rectem Restaurant Ordering System
 
 Setup
 1. Extract/place the folder into:
@@ -8,18 +8,18 @@ Setup
 2. Start Apache and MySQL in XAMPP.
 
 3. Open phpMyAdmin and import:
-   database/rectem_cafeteria.sql
+   database/rectem_restaurant.sql
 
 4. Visit:
    http://localhost/rectem_cafeteria/
 
 Seeded accounts
 - Admin
-  Email: admin@rectemcafeteria.com
+  Email: admin@rectemrestaurant.com
   Password: admin123
 
 - Staff
-  Email: staff@rectemcafeteria.com
+  Email: staff@rectemrestaurant.com
   Password: admin123
 
 - Demo Student

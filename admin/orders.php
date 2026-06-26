@@ -24,6 +24,15 @@ if ($itemsQuery) {
     }
 }
 
+$showStatusPopup = false;
+$updatedOrderId = null;
+$updatedStatus = null;
+if (isset($_GET['updated'], $_GET['order_id'], $_GET['status']) && $_GET['updated'] === '1' && is_numeric($_GET['order_id'])) {
+    $showStatusPopup = true;
+    $updatedOrderId = (int) $_GET['order_id'];
+    $updatedStatus = trim($_GET['status']);
+}
+
 include '../includes/header.php';
 ?>
 
@@ -108,25 +117,29 @@ include '../includes/header.php';
                         </div>
 
                         <div class="order-card-footer">
-                            <form action="<?php echo qb_url('admin/update_order.php'); ?>" method="POST" class="order-update-form">
-                                <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
-                                <select name="status" required>
-                                    <?php
-                                    $isPickup = ($order['delivery_method'] === 'Pickup');
-                                    if ($isPickup) {
-                                        $statuses = ['Pending','Confirmed','Preparing','Ready for Pickup','Completed','Cancelled'];
-                                    } else {
-                                        $statuses = ['Pending','Confirmed','Preparing','Out for Delivery','Delivered','Completed','Cancelled'];
-                                    }
-                                    foreach ($statuses as $status):
-                                    ?>
-                                        <option value="<?php echo h($status); ?>" <?php echo ($order['order_status'] === $status) ? 'selected' : ''; ?>>
-                                            <?php echo h($status); ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
-                            </form>
+                            <?php if ($order['order_status'] === 'Cancelled'): ?>
+                                <span class="status-badge status-cancelled">Deleted by Student</span>
+                            <?php else: ?>
+                                <form action="<?php echo qb_url('admin/update_order.php'); ?>" method="POST" class="order-update-form">
+                                    <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
+                                    <select name="status" required>
+                                        <?php
+                                        $isPickup = ($order['delivery_method'] === 'Pickup');
+                                        if ($isPickup) {
+                                            $statuses = ['Pending','Confirmed','Preparing','Ready for Pickup','Completed','Cancelled'];
+                                        } else {
+                                            $statuses = ['Pending','Confirmed','Preparing','Out for Delivery','Delivered','Completed','Cancelled'];
+                                        }
+                                        foreach ($statuses as $status):
+                                        ?>
+                                            <option value="<?php echo h($status); ?>" <?php echo ($order['order_status'] === $status) ? 'selected' : ''; ?>>
+                                                <?php echo h($status); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                </form>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endwhile; ?>
@@ -139,5 +152,43 @@ include '../includes/header.php';
         <?php endif; ?>
     </div>
 </section>
+
+    <?php if ($showStatusPopup): ?>
+        <div id="completionPopup" class="completion-popup-modal open">
+            <div class="completion-popup-card">
+                <button type="button" class="popup-close" aria-label="Close popup">×</button>
+                <div class="popup-icon">✓</div>
+                <h2>Order Status Updated</h2>
+                <p>Order #<?php echo $updatedOrderId; ?> is now marked as <strong><?php echo h($updatedStatus); ?></strong>.</p>
+                <div class="popup-actions">
+                    <a href="<?php echo qb_url('admin/orders.php'); ?>" class="btn btn-primary">OK</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var modal = document.getElementById('completionPopup');
+                if (!modal) return;
+
+                function closePopup() {
+                    modal.classList.remove('open');
+                    if (window.history && history.replaceState) {
+                        history.replaceState(null, '', window.location.pathname);
+                    }
+                }
+
+                modal.addEventListener('click', function (event) {
+                    if (event.target === modal) {
+                        closePopup();
+                    }
+                });
+
+                var closeButton = modal.querySelector('.popup-close');
+                if (closeButton) {
+                    closeButton.addEventListener('click', closePopup);
+                }
+            });
+        </script>
+    <?php endif; ?>
 
 <?php include '../includes/footer.php'; ?>

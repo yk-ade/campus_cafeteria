@@ -34,17 +34,29 @@ include 'includes/header.php';
                             <th>Method</th>
                             <th>Status</th>
                             <th>Date</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($order = $result->fetch_assoc()): ?>
                             <?php $statusClass = strtolower(str_replace(' ', '-', $order['order_status'])); ?>
+                            <?php $canDelete = in_array($order['order_status'], ['Pending', 'Confirmed', 'Preparing'], true); ?>
                             <tr class="order-row" onclick="window.location.href='<?php echo qb_url('view-receipt.php?order_id=' . $order['id']); ?>'">
                                 <td>#<?php echo $order['id']; ?><br><small><?php echo h($order['order_token'] ?? ''); ?></small></td>
                                 <td>₦<?php echo number_format((float)$order['total_amount'], 2); ?></td>
                                 <td><?php echo h($order['delivery_method']); ?></td>
                                 <td><span class="status-badge status-<?php echo $statusClass; ?>"><?php echo h($order['order_status']); ?></span></td>
                                 <td><?php echo date("M d, Y h:i A", strtotime($order['created_at'])); ?></td>
+                                <td>
+                                    <?php if ($canDelete): ?>
+                                        <form method="POST" action="<?php echo qb_url('delete_order.php'); ?>" onsubmit="event.stopPropagation(); return confirm('Delete this order? This action will mark the order as deleted for admin.');">
+                                            <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="event.stopPropagation();">Delete</button>
+                                        </form>
+                                    <?php else: ?>
+                                        <span class="text-muted">—</span>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>

@@ -37,6 +37,12 @@ if ($loggedIn) {
     }
 }
 
+$userRole = $studentUser ? 'student' : ($staffUser ? 'staff' : ($adminUser ? 'admin' : 'guest'));
+$orderStatusEndpoint = qb_url('order-status-updates.php');
+if (session_status() === PHP_SESSION_ACTIVE) {
+    session_write_close();
+}
+
 $logoTarget = qb_url('index.php');
 if ($loggedIn) {
     if ($adminUser)       $logoTarget = qb_url('admin/dashboard.php');
@@ -51,9 +57,9 @@ if ($loggedIn) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rectem Cafeteria – Smart ordering for campus life</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="<?php echo qb_url('assets/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo qb_url('assets/css/style.css'); ?>?v=3">
 </head>
-<body>
+<body data-user-role="<?php echo h($userRole); ?>" data-order-status-endpoint="<?php echo h($orderStatusEndpoint); ?>">
 
 <?php if ($loggedIn && $adminUser): ?>
 <!-- ================================================================
@@ -64,7 +70,7 @@ if ($loggedIn) {
     <aside class="student-sidebar admin-sidebar-theme" id="studentSidebar">
         <div class="sidebar-header">
             <a href="<?php echo $logoTarget; ?>" class="sidebar-logo-link">
-                <div class="sidebar-logo-icon">C</div>
+                <div class="sidebar-logo-icon">R</div>
                 <div class="sidebar-logo-text">
                     <strong>Rectem Cafeteria</strong>
                     <span>Admin Panel</span>
@@ -168,7 +174,7 @@ if ($loggedIn) {
     <aside class="student-sidebar staff-sidebar-theme" id="studentSidebar">
         <div class="sidebar-header">
             <a href="<?php echo $logoTarget; ?>" class="sidebar-logo-link">
-                <div class="sidebar-logo-icon">C</div>
+                <div class="sidebar-logo-icon">R</div>
                 <div class="sidebar-logo-text">
                     <strong>Rectem Cafeteria</strong>
                     <span>Kitchen Staff</span>
@@ -248,7 +254,7 @@ if ($loggedIn) {
     <aside class="student-sidebar" id="studentSidebar">
         <div class="sidebar-header">
             <a href="<?php echo $logoTarget; ?>" class="sidebar-logo-link">
-                <div class="sidebar-logo-icon">C</div>
+                <div class="sidebar-logo-icon">R</div>
                 <div class="sidebar-logo-text">
                     <strong>Rectem Cafeteria</strong>
                     <span>Student Portal</span>
@@ -376,7 +382,7 @@ if ($loggedIn) {
 <header class="site-header">
     <div class="container nav-container">
         <a href="<?php echo $logoTarget; ?>" class="logo">
-            <div class="logo-icon">C</div>
+            <div class="logo-icon">R</div>
             <div class="logo-text">
                 <h2>Rectem Cafeteria</h2>
                 <p>Fast meals. Smarter campus service.</p>
