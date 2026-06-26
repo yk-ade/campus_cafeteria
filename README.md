@@ -2,8 +2,8 @@ Rectem Restaurant Ordering System
 
 Setup
 1. Extract/place the folder into:
-   C:\xampp\htdocs\rectem_cafeteria
-   (If keeping the old folder name "campus_cafeteria", update your browser URL and the qb fallback if needed.)
+   C:\xampp\htdocs\rectem_restaurant
+   (If keeping the old folder name "rectem_restaurant", update your browser URL and the qb fallback if needed.)
 
 2. Start Apache and MySQL in XAMPP.
 
@@ -11,7 +11,7 @@ Setup
    database/rectem_restaurant.sql
 
 4. Visit:
-   http://localhost/rectem_cafeteria/
+   http://localhost/rectem_restaurant/
 
 Seeded accounts
 - Admin
@@ -23,7 +23,7 @@ Seeded accounts
   Password: admin123
 
 - Demo Student
-  Email: student@rectemcafeteria.com
+  Email: student@rectemrestaurant.com
   Matric No: RECTEM/24/001
   Password: admin123
 
